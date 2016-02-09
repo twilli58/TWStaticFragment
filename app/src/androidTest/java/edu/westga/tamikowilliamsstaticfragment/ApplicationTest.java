@@ -1,4 +1,4 @@
-package com.miko.tamikowilliamsstaticfragment;
+package edu.westga.tamikowilliamsstaticfragment;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
