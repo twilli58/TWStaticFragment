@@ -18,6 +18,11 @@ import com.miko.tamikowilliamsstaticfragment.R;
 public class DataEntryFragment extends Fragment {
     private EditText editTextFirst;
     private EditText editTextSecond;
+    private DataEntryListener listener;
+
+    public interface DataEntryListener {
+        public void onDataEntry(Double a, Double b);
+    }
 
     public DataEntryFragment() {
     }
@@ -40,9 +45,20 @@ public class DataEntryFragment extends Fragment {
         return theView;
     }
     private void multiplyButtonClicked(View v) {
-        double a = Double.parseDouble(this.editTextFirst.getText().toString());
-        double b = Double.parseDouble(this.editTextSecond.getText().toString());
-        //listener.onDataEntry(a, b);
+
+        double number1 = Double.parseDouble(this.editTextFirst.getText().toString());
+        double number2 = Double.parseDouble(this.editTextSecond.getText().toString());
+        listener.onDataEntry(number1, number2);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (DataEntryListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString());
+        }
 
     }
 
