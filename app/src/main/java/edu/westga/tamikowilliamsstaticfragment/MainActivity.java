@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 import com.miko.tamikowilliamsstaticfragment.R;
 
-public class MainActivity extends AppCompatActivity implements DataEntryFragment.DataEntryListener {
+public class MainActivity extends AppCompatActivity implements DataEntryFragment.DataEntryListener, DataDisplayFragment.DataDisplayListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,17 @@ public class MainActivity extends AppCompatActivity implements DataEntryFragment
         displayFragment.setNumberOne(a);
         displayFragment.setNumberTwo(b);
         displayFragment.multiple();
+        displayFragment.displayProduct();
+
+    }
+
+    @Override
+    public void onDataDisplay(Double a, Double b) {
+        DataAddDisplayFragment displayFragment = (DataAddDisplayFragment)
+                getSupportFragmentManager().findFragmentById(R.id.dataAddDisplayFragment);
+        displayFragment.setNumberOneAdd(a);
+        displayFragment.setNumberTwoAdd(b);
+        displayFragment.Add();
         displayFragment.displayProduct();
     }
 }
