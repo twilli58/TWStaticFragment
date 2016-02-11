@@ -46,7 +46,6 @@ public class DataEntryFragment extends Fragment {
         return theView;
     }
     private void multiplyButtonClicked(View v) {
-
         double number1 = Double.parseDouble(this.editTextFirst.getText().toString());
         double number2 = Double.parseDouble(this.editTextSecond.getText().toString());
         listener.onDataEntry(number1, number2);

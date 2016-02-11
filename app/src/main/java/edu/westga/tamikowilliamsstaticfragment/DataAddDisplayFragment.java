@@ -1,11 +1,13 @@
 package edu.westga.tamikowilliamsstaticfragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,9 +18,7 @@ import com.miko.tamikowilliamsstaticfragment.R;
  */
 
 public class DataAddDisplayFragment extends Fragment {
-    private static TextView textView2;
-    private Double numberOneAdd, numberTwoAdd;
-    private Double addResults;
+    private static TextView textView1;
 
     public DataAddDisplayFragment() {
         // Required empty public constructor
@@ -31,32 +31,22 @@ public class DataAddDisplayFragment extends Fragment {
         // Inflate the layout for this fragment
         View theView = inflater.inflate(R.layout.fragment_data_add_display,
                 container, false);
-        this.textView2 = (TextView) theView.findViewById(R.id.textView3);
+
+        this.textView1 = (TextView) theView.findViewById(R.id.textView3);
 
         return theView;
-
     }
 
-    public Double getNumberOneAdd() {
-        return numberOneAdd;
+
+    public void displayAddProduct(Double result) {
+        textView1.setText(String.valueOf(result));
     }
 
-    public void setNumberOneAdd(Double numberOneAdd) {
-        this.numberOneAdd = numberOneAdd;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
-    public Double getNumberTwoAdd() {
-        return numberTwoAdd;
-    }
 
-    public void setNumberTwoAdd(Double numberTwoAdd) {
-        this.numberTwoAdd = numberTwoAdd;
-    }
-    public void Add(){
-        addResults = numberOneAdd + numberTwoAdd;
-    }
-    public void displayAddProduct() {
-        textView2.setText("" + addResults);
-    }
 
 }

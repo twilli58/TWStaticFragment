@@ -18,15 +18,12 @@ import com.miko.tamikowilliamsstaticfragment.R;
  */
 public class DataDisplayFragment extends Fragment {
     private static TextView textView1;
-    private Double numberOne, numberTwo;
-    private Double results;
-    private EditText editTextFirst;
-    private EditText editTextSecond;
     private DataDisplayListener listener;
 
-   public interface DataDisplayListener {
-        public void onDataDisplay(Double c, Double d);
+    public interface DataDisplayListener {
+        public void onDataDisplay();
     }
+
     public DataDisplayFragment() {
         // Required empty public constructor
     }
@@ -39,8 +36,8 @@ public class DataDisplayFragment extends Fragment {
         View theView = inflater.inflate(R.layout.fragment_data_display,
                 container, false);
 
-        this.editTextFirst = (EditText) theView.findViewById(R.id.editText);
-        this.editTextSecond = (EditText) theView.findViewById(R.id.editText2);
+        //this.editTextFirst = (EditText) theView.findViewById(R.id.editText);
+        //this.editTextSecond = (EditText) theView.findViewById(R.id.editText2);
         this.textView1 = (TextView) theView.findViewById(R.id.textView2);
 
         Button addButton = (Button) theView.findViewById(R.id.addBtn);
@@ -50,33 +47,14 @@ public class DataDisplayFragment extends Fragment {
             }
         });
         return theView;
-
-    }
-    public Double getNumberOne() {
-        return numberOne;
-    }
-
-    public void setNumberOne(Double numberOne) {
-        this.numberOne = numberOne;
-    }
-
-    public Double getNumberTwo() {
-        return numberTwo;
-    }
-
-    public void setNumberTwo(Double numberTwo) {
-        this.numberTwo = numberTwo;
-    }
-    public void multiple() {
-        results = numberOne * numberTwo;
-    }
-    public void displayProduct() {
-        textView1.setText("" + results.toString().trim());
     }
     private void addButtonClicked(View v){
-        double number1 = Double.parseDouble(this.editTextFirst.getText().toString());
-        double number2 = Double.parseDouble(this.editTextSecond.getText().toString());
-        listener.onDataDisplay(number1, number2);
+        listener.onDataDisplay();
+    }
+
+
+    public void displayProduct(Double result) {
+        textView1.setText(String.valueOf(result));
     }
 
     @Override
@@ -92,3 +70,4 @@ public class DataDisplayFragment extends Fragment {
 
 
 }
+

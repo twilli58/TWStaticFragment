@@ -13,6 +13,8 @@ import com.miko.tamikowilliamsstaticfragment.R;
 
 public class MainActivity extends AppCompatActivity implements DataEntryFragment.DataEntryListener, DataDisplayFragment.DataDisplayListener {
 
+    private double numberOne;
+    private double numberTwo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,20 +56,16 @@ public class MainActivity extends AppCompatActivity implements DataEntryFragment
     @Override
     public void onDataEntry(Double a, Double b) {
         DataDisplayFragment displayFragment = (DataDisplayFragment)
-                        getSupportFragmentManager().findFragmentById(R.id.dataDisplayFragment);
-        displayFragment.setNumberOne(a);
-        displayFragment.setNumberTwo(b);
-        displayFragment.multiple();
-        displayFragment.displayProduct();
+                getSupportFragmentManager().findFragmentById(R.id.dataDisplayFragment);
+        numberOne = a;
+        numberTwo = b;
+        displayFragment.displayProduct(a*b);
 
     }
     @Override
-    public void onDataDisplay(Double c, Double d) {
+    public void onDataDisplay() {
         DataAddDisplayFragment displayFragment = (DataAddDisplayFragment)
                 getSupportFragmentManager().findFragmentById(R.id.dataAddDisplayFragment);
-        displayFragment.setNumberOneAdd(c);
-        displayFragment.setNumberTwoAdd(d);
-        displayFragment.Add();
-        displayFragment.displayAddProduct();
+        displayFragment.displayAddProduct(numberOne + numberTwo);
     }
 }
