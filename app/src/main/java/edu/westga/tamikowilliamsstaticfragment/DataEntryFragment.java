@@ -15,6 +15,7 @@ import com.miko.tamikowilliamsstaticfragment.R;
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class DataEntryFragment extends Fragment {
     private EditText editTextFirst;
     private EditText editTextSecond;

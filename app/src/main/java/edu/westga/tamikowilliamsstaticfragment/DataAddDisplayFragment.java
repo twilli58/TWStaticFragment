@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.miko.tamikowilliamsstaticfragment.R;
@@ -13,6 +14,7 @@ import com.miko.tamikowilliamsstaticfragment.R;
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class DataAddDisplayFragment extends Fragment {
     private static TextView textView2;
     private Double numberOneAdd, numberTwoAdd;
@@ -30,6 +32,7 @@ public class DataAddDisplayFragment extends Fragment {
         View theView = inflater.inflate(R.layout.fragment_data_add_display,
                 container, false);
         this.textView2 = (TextView) theView.findViewById(R.id.textView3);
+
         return theView;
 
     }
@@ -52,7 +55,8 @@ public class DataAddDisplayFragment extends Fragment {
     public void Add(){
         addResults = numberOneAdd + numberTwoAdd;
     }
-    public void displayProduct() {
-        textView2.setText("" + addResults.toString());
+    public void displayAddProduct() {
+        textView2.setText("" + addResults);
     }
+
 }

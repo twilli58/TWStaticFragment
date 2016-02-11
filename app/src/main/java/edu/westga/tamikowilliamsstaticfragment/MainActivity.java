@@ -61,14 +61,13 @@ public class MainActivity extends AppCompatActivity implements DataEntryFragment
         displayFragment.displayProduct();
 
     }
-
     @Override
-    public void onDataDisplay(Double a, Double b) {
+    public void onDataDisplay(Double c, Double d) {
         DataAddDisplayFragment displayFragment = (DataAddDisplayFragment)
                 getSupportFragmentManager().findFragmentById(R.id.dataAddDisplayFragment);
-        displayFragment.setNumberOneAdd(a);
-        displayFragment.setNumberTwoAdd(b);
+        displayFragment.setNumberOneAdd(c);
+        displayFragment.setNumberTwoAdd(d);
         displayFragment.Add();
-        displayFragment.displayProduct();
+        displayFragment.displayAddProduct();
     }
 }

@@ -24,8 +24,8 @@ public class DataDisplayFragment extends Fragment {
     private EditText editTextSecond;
     private DataDisplayListener listener;
 
-    public interface DataDisplayListener {
-        public void onDataDisplay(Double a, Double b);
+   public interface DataDisplayListener {
+        public void onDataDisplay(Double c, Double d);
     }
     public DataDisplayFragment() {
         // Required empty public constructor
@@ -38,21 +38,19 @@ public class DataDisplayFragment extends Fragment {
         // Inflate the layout for this fragment
         View theView = inflater.inflate(R.layout.fragment_data_display,
                 container, false);
-        this.textView1 = (TextView) theView.findViewById(R.id.textView2);
+
         this.editTextFirst = (EditText) theView.findViewById(R.id.editText);
         this.editTextSecond = (EditText) theView.findViewById(R.id.editText2);
-        Button addButton = (Button) theView.findViewById(R.id.addButton);
+        this.textView1 = (TextView) theView.findViewById(R.id.textView2);
+
+        Button addButton = (Button) theView.findViewById(R.id.addBtn);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 addButtonClicked(v);
             }
         });
         return theView;
-    }
-    private void addButtonClicked(View v){
-        double number1 = Double.parseDouble(this.editTextFirst.getText().toString());
-        double number2 = Double.parseDouble(this.editTextSecond.getText().toString());
-        listener.onDataDisplay(number1, number2);
+
     }
     public Double getNumberOne() {
         return numberOne;
@@ -60,6 +58,25 @@ public class DataDisplayFragment extends Fragment {
 
     public void setNumberOne(Double numberOne) {
         this.numberOne = numberOne;
+    }
+
+    public Double getNumberTwo() {
+        return numberTwo;
+    }
+
+    public void setNumberTwo(Double numberTwo) {
+        this.numberTwo = numberTwo;
+    }
+    public void multiple() {
+        results = numberOne * numberTwo;
+    }
+    public void displayProduct() {
+        textView1.setText("" + results.toString().trim());
+    }
+    private void addButtonClicked(View v){
+        double number1 = Double.parseDouble(this.editTextFirst.getText().toString());
+        double number2 = Double.parseDouble(this.editTextSecond.getText().toString());
+        listener.onDataDisplay(number1, number2);
     }
 
     @Override
@@ -72,18 +89,6 @@ public class DataDisplayFragment extends Fragment {
         }
     }
 
-    public Double getNumberTwo() {
-        return numberTwo;
-    }
 
-    public void setNumberTwo(Double numberTwo) {
-        this.numberTwo = numberTwo;
-    }
-    public void multiple() {
-       results = numberOne * numberTwo;
-    }
-    public void displayProduct() {
-       textView1.setText("" + results.toString());
-    }
 
 }
